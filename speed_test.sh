@@ -4,7 +4,7 @@ baseTestFile="/tmp/printf_speed_test_tmp_file.txt."
 printfExecLst=()
 
 jobsId=()
-trap 'if [[ ! -z "${jobsId[@]}" ]]; then kill ${jobsId[@]} &>/dev/null; fi; rm -rf "$stdTestFile" "$ftTestFile"; exit 130' EXIT HUP TERM INT
+trap 'if [[ ! -z "${jobsId[@]}" ]]; then kill ${jobsId[@]} &>/dev/null; fi; rm -rf "$baseTestFile"*; exit 130' EXIT HUP TERM INT
 
 for param in "$@"; do
 	nbOfColonInParam="$(echo -n "$param" | tr -dc ':' | wc -c | tr -d $' \r\n\t')"
