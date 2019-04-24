@@ -33,7 +33,7 @@ while [[ "$idx" != "$nbOfExec" ]]; do
 	fi
 	echo "Test de la vitesse de ${param}."
 	rm -rf "${baseTestFile}${idx}"
-	"${param}" > "${baseTestFile}${idx}" & jobsId+=($!); sleep 10; kill -9 $!; wait $! 2>/dev/null
+	./"${param}" > "${baseTestFile}${idx}" & jobsId+=($!); sleep 10; kill -9 $!; wait $! 2>/dev/null
 
 	(( ++idx ))
 done
