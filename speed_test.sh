@@ -55,12 +55,16 @@ while [[ "$idx" != "$nbOfExec" ]]; do
 	(( ++idx ))
 done
 
+if [[ "$resultMaxSize" -gt "0" ]]; then
+	(( resultMaxSize+=(resultMaxSize-1)/3 ))
+fi
+
 idx="0"
 while [[ "$idx" != "$nbOfExec" ]]; do
 	curExecName="${printfExecLst[$idx]}"
 	curExecResult="${printfResultLst[$idx]}"
 
-	printf 'Resultat de %-*s : %*s\n' "$nameMaxSize" "$curExecName" "$resultMaxSize" "$curExecResult"
+	printf "Resultat de %-*s : %'*d\n" "$nameMaxSize" "$curExecName" "$resultMaxSize" "$curExecResult"
 
 	(( ++idx ))
 done
